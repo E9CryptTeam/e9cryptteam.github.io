@@ -1,167 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schedule</title>
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th,
-    td {
-      padding: 8px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-  </style>
-</head>
-
-<body>
-  <form id="date-form">
-    <label for="start">Start Date:</label>
-    <input type="date" id="start" name="start">
-    <label for="end">End Date:</label>
-    <input type="date" id="end" name="end">
-    <input type="submit" value="Submit">
-  </form>
-  <h1>Schedule</h1>
-  <h2 id="date-range"></h2>
-  <br>
-  <br>
-  <table border="1" id="schedule-table">
-    <tr>
-      <th>Date</th>
-      <th>Shift 1</th>
-      <th>Shift 2</th>
-      <th>Shift 3</th>
-      <th>Off</th>
-    </tr>
-  </table>
-
-  <script>
-    const cyclePattern = [
-      {
-        shifts: [
-          ["Doni", "KOSONG"],
-          ["Afif", "Farid"],
-          ["Anjar", "Hilmi"],
-        ],
-        off: ["Fiki", "KOSONG", "Adit"],
-      },
-      {
-        shifts: [
-          ["Adit", "Doni"],
-          ["KOSONG", "Afif"],
-          ["Fiki", "Anjar"],
-        ],
-        off: ["KOSONG", "Farid", "Hilmi"],
-      },
-      {
-        shifts: [
-          ["Farid", "Adit"],
-          ["Hilmi", "KOSONG"],
-          ["KOSONG", "Fiki"],
-        ],
-        off: ["Doni", "Afif", "Anjar"],
-      },
-      {
-        shifts: [
-          ["Afif", "Farid"],
-          ["Anjar", "Hilmi"],
-          ["Doni", "KOSONG"],
-        ],
-        off: ["Adit", "Fiki", "KOSONG"],
-      },
-      {
-        shifts: [
-          ["KOSONG", "Afif"],
-          ["Fiki", "Anjar"],
-          ["Adit", "Hilmi"],
-        ],
-        off: ["Farid", "Doni", "KOSONG"],
-      },
-      {
-        shifts: [
-          ["Hilmi", "KOSONG"],
-          ["KOSONG", "Fiki"],
-          ["Farid", "Adit"],
-        ],
-        off: ["Afif", "Anjar", "Doni"],
-      },
-      {
-        shifts: [
-          ["Anjar", "Hilmi"],
-          ["Doni", "KOSONG"],
-          ["Afif", "Farid"],
-        ],
-        off: ["Fiki", "Adit", "KOSONG"],
-      },
-      {
-        shifts: [
-          ["Fiki", "Anjar"],
-          ["Adit", "Hilmi"],
-          ["KOSONG", "Farid"],
-        ],
-        off: ["KOSONG", "Doni", "Afif"],
-      },
-      {
-        shifts: [
-          ["KOSONG", "Fiki"],
-          ["Farid", "Adit"],
-          ["Afif", "Hilmi"],
-        ],
-        off: ["Anjar", "Doni", "KOSONG"],
-      },
-    ];
-
-    const getSchedule = (startDate, endDate) => {
-      const schedule = [];
-      const cycleLength = cyclePattern.length;
-      let currentDate = new Date(startDate);
-
-      while (currentDate <= endDate) {
-        const dayOffset = Math.floor(
-          (currentDate - new Date(2024, 4, 13)) / (1000 * 60 * 60 * 24),
-        );
-        const dayOfCycle = ((dayOffset % cycleLength) + cycleLength) % cycleLength;
-        schedule.push({
-          date: currentDate.toISOString().split("T")[0],
-          shifts: {
-            shift_1: cyclePattern[dayOfCycle].shifts[0],
-            shift_2: cyclePattern[dayOfCycle].shifts[1],
-            shift_3: cyclePattern[dayOfCycle].shifts[2],
-          },
-          off: cyclePattern[dayOfCycle].off,
-        });
-        currentDate.setDate(currentDate.getDate() + 1);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedule</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
       }
 
-      return schedule;
-    };
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
 
-    document.getElementById('date-form').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const start = document.getElementById('start').value;
-      const end = document.getElementById('end').value;
+      th {
+        background-color: #f2f2f2;
+      }
 
-      if (start && end) {
-        const startDate = new Date(start);
-        const endDate = new Date(end);
-        const schedule = getSchedule(startDate, endDate);
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
 
-        const table = document.getElementById('schedule-table');
-        table.innerHTML = `
+  <body>
+    <form id="date-form">
+      <label for="start">Start Date:</label>
+      <input type="date" id="start" name="start" />
+      <label for="end">End Date:</label>
+      <input type="date" id="end" name="end" />
+      <input type="submit" value="Submit" />
+    </form>
+    <h1>Schedule</h1>
+    <h2 id="date-range"></h2>
+    <br />
+    <br />
+    <table border="1" id="schedule-table">
+      <tr>
+        <th>Date</th>
+        <th>Shift 1</th>
+        <th>Shift 2</th>
+        <th>Shift 3</th>
+        <th>Off</th>
+      </tr>
+    </table>
+
+    <script>
+      const cyclePattern = [
+        {
+          shifts: [
+            ["Doni", "KOSONG"],
+            ["Afif", "Farid"],
+            ["Anjar", "Hilmi"],
+          ],
+          off: ["Fiki", "KOSONG", "Adit"],
+        },
+        {
+          shifts: [
+            ["Adit", "Doni"],
+            ["KOSONG", "Afif"],
+            ["Fiki", "Anjar"],
+          ],
+          off: ["KOSONG", "Farid", "Hilmi"],
+        },
+        {
+          shifts: [
+            ["Farid", "Adit"],
+            ["Hilmi", "KOSONG"],
+            ["KOSONG", "Fiki"],
+          ],
+          off: ["Doni", "Afif", "Anjar"],
+        },
+        {
+          shifts: [
+            ["Afif", "Farid"],
+            ["Anjar", "Hilmi"],
+            ["Doni", "KOSONG"],
+          ],
+          off: ["Adit", "Fiki", "KOSONG"],
+        },
+        {
+          shifts: [
+            ["KOSONG", "Afif"],
+            ["Fiki", "Anjar"],
+            ["Adit", "Doni"],
+          ],
+          off: ["Farid", "Hilmi", "KOSONG"],
+        },
+        {
+          shifts: [
+            ["Hilmi", "KOSONG"],
+            ["KOSONG", "Fiki"],
+            ["Farid", "Adit"],
+          ],
+          off: ["Afif", "Anjar", "Doni"],
+        },
+        {
+          shifts: [
+            ["Anjar", "Hilmi"],
+            ["Doni", "KOSONG"],
+            ["Afif", "Farid"],
+          ],
+          off: ["Fiki", "Adit", "KOSONG"],
+        },
+        {
+          shifts: [
+            ["Fiki", "Anjar"],
+            ["Adit", "Doni"],
+            ["KOSONG", "Afif"],
+          ],
+          off: ["KOSONG", "Hilmi", "Farid"],
+        },
+        {
+          shifts: [
+            ["KOSONG", "Fiki"],
+            ["Farid", "Adit"],
+            ["Hilmi", "KOSONG"],
+          ],
+          off: ["Anjar", "Doni", "Afif"],
+        },
+      ];
+
+      const getSchedule = (startDate, endDate) => {
+        const schedule = [];
+        const cycleLength = cyclePattern.length;
+        let currentDate = new Date(startDate);
+
+        while (currentDate <= endDate) {
+          const dayOffset = Math.floor((currentDate - new Date(2024, 4, 13)) / (1000 * 60 * 60 * 24));
+          const dayOfCycle = ((dayOffset % cycleLength) + cycleLength) % cycleLength;
+          schedule.push({
+            date: currentDate.toISOString().split("T")[0],
+            shifts: {
+              shift_1: cyclePattern[dayOfCycle].shifts[0],
+              shift_2: cyclePattern[dayOfCycle].shifts[1],
+              shift_3: cyclePattern[dayOfCycle].shifts[2],
+            },
+            off: cyclePattern[dayOfCycle].off,
+          });
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+
+        return schedule;
+      };
+
+      document.getElementById("date-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const start = document.getElementById("start").value;
+        const end = document.getElementById("end").value;
+
+        if (start && end) {
+          const startDate = new Date(start);
+          const endDate = new Date(end);
+          const schedule = getSchedule(startDate, endDate);
+
+          const table = document.getElementById("schedule-table");
+          table.innerHTML = `
                     <tr>
                         <th>Date</th>
                         <th>Shift 1</th>
@@ -171,8 +168,8 @@
                     </tr>
                 `;
 
-        schedule.forEach(day => {
-          const row = `
+          schedule.forEach((day) => {
+            const row = `
                         <tr>
                             <td>${day.date}</td>
                             <td>${day.shifts.shift_1.join(" - ")}</td>
@@ -181,20 +178,19 @@
                             <td>${day.off.join(" - ")}</td>
                         </tr>
                     `;
-          table.insertAdjacentHTML('beforeend', row);
-        });
+            table.insertAdjacentHTML("beforeend", row);
+          });
 
-        document.getElementById('date-range').textContent = `From ${start} to ${end}`;
-      }
-    });
+          document.getElementById("date-range").textContent = `From ${start} to ${end}`;
+        }
+      });
 
-    // Set default dates and trigger form submission to show initial data
-    const defaultStart = new Date();
-    const defaultEnd = new Date(new Date().setDate(defaultStart.getDate() + 7));
-    document.getElementById('start').value = defaultStart.toISOString().split("T")[0];
-    document.getElementById('end').value = defaultEnd.toISOString().split("T")[0];
-    document.getElementById('date-form').dispatchEvent(new Event('submit'));
-  </script>
-</body>
-
+      // Set default dates and trigger form submission to show initial data
+      const defaultStart = new Date();
+      const defaultEnd = new Date(new Date().setDate(defaultStart.getDate() + 7));
+      document.getElementById("start").value = defaultStart.toISOString().split("T")[0];
+      document.getElementById("end").value = defaultEnd.toISOString().split("T")[0];
+      document.getElementById("date-form").dispatchEvent(new Event("submit"));
+    </script>
+  </body>
 </html>
