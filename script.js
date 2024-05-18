@@ -33,7 +33,7 @@
  */
 class ScheduleBuilder {
   constructor() {
-    this.schedulePatternUrl = "/schedule-pattern.json"; // Adjust the path if necessary
+    this.schedulePatternUrl = "schedule-pattern.json";
     this.scheduleTable = document.getElementById("schedule-table");
     this.dateRangeLabel = document.getElementById("date-range");
     this.startDateInput = document.getElementById("start");
