@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Schedule</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="container">
     <form id="date-form">
       <label for="start">Start Date:</label>
       <input type="date" id="start" name="start" />
 
-      <label for="end">End Date:</label> <input type="date" id="end" name="end" />
+      <label for="end">End Date:</label>
+      <input type="date" id="end" name="end" />
 
       <input type="submit" value="Submit" />
-      <a href="." id="reset">Reset</a>
     </form>
 
     <h1>Schedule</h1>
     <h2 id="date-range"></h2>
 
     <div class="table-container">
+      <div id="loader" class="loader" style="display: none;"></div> <!-- Add this line for loader -->
       <table id="schedule-table">
         <tr>
           <th>Date</th>
@@ -33,7 +36,7 @@
       </table>
     </div>
   </div>
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
-</html>
 
+</html>

@@ -63,6 +63,35 @@ input[type="submit"]:hover {
 .table-container {
   width: 100%;
   overflow-x: auto;
+  position: relative;
+  /* Add relative positioning for loader */
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  /* Light grey */
+  border-top: 8px solid #343a40;
+  /* Dark grey */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  /* Hide loader by default */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 table {
@@ -142,7 +171,7 @@ tr:nth-child(even) {
     left: 10px;
     width: 45%;
     padding-right: 10px;
-    white-space: wrap;
+    white-space: nowrap;
     transform: translateY(-50%);
     font-weight: bold;
   }

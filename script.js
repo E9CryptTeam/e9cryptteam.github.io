@@ -33,15 +33,30 @@
  */
 class ScheduleBuilder {
   constructor() {
-    this.schedulePatternUrl = "schedule-pattern.json";
+    this.schedulePatternUrl = "/schedule-pattern.json"; // Adjust the path if necessary
     this.scheduleTable = document.getElementById("schedule-table");
     this.dateRangeLabel = document.getElementById("date-range");
     this.startDateInput = document.getElementById("start");
     this.endDateInput = document.getElementById("end");
     this.form = document.getElementById("date-form");
+    this.loader = document.getElementById("loader");
 
     this.form.addEventListener("submit", (event) => this.onFormSubmit(event));
     window.addEventListener("popstate", () => this.onPopState());
+  }
+
+  /**
+   * Show the loader.
+   */
+  showLoader() {
+    this.loader.style.display = "block";
+  }
+
+  /**
+   * Hide the loader.
+   */
+  hideLoader() {
+    this.loader.style.display = "none";
   }
 
   /**
@@ -141,6 +156,7 @@ class ScheduleBuilder {
     const end = this.endDateInput.value;
 
     if (start && end) {
+      this.showLoader(); // Show the loader
       this.updateQueryParams(start, end);
       const startDate = new Date(start);
       const endDate = new Date(end);
@@ -182,6 +198,7 @@ class ScheduleBuilder {
       });
 
       this.dateRangeLabel.textContent = `From ${start} to ${end}`;
+      this.hideLoader(); // Hide the loader
     }
   }
 
@@ -193,6 +210,7 @@ class ScheduleBuilder {
     if (start && end) {
       this.startDateInput.value = start;
       this.endDateInput.value = end;
+      this.showLoader(); // Show the loader
       const startDate = new Date(start);
       const endDate = new Date(end);
       const cyclePattern = await this.fetchSchedulePattern();
@@ -233,6 +251,7 @@ class ScheduleBuilder {
       });
 
       this.dateRangeLabel.textContent = `From ${start} to ${end}`;
+      this.hideLoader(); // Hide the loader
     }
   }
 
@@ -243,7 +262,7 @@ class ScheduleBuilder {
     const { start, end } = this.getQueryParams();
     const today = new Date();
     const defaultStart = new Date(today);
-    defaultStart.setDate(today.getDate() - 1);
+    defaultStart.setDate(today.getDate() - 7);
     const defaultEnd = new Date(today);
     defaultEnd.setDate(today.getDate() + 7);
 
