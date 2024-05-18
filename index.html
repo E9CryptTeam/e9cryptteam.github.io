@@ -13,7 +13,7 @@
       th,
       td {
         padding: 8px;
-        text-align: left;
+        text-align: center;
       }
 
       th {
@@ -22,6 +22,10 @@
 
       tr:nth-child(even) {
         background-color: #f2f2f2;
+      }
+
+      .highlight {
+        background-color: yellow;
       }
     </style>
   </head>
@@ -133,7 +137,7 @@
           const dayOffset = Math.floor((currentDate - new Date(2024, 4, 13)) / (1000 * 60 * 60 * 24));
           const dayOfCycle = ((dayOffset % cycleLength) + cycleLength) % cycleLength;
           schedule.push({
-            date: currentDate.toISOString().split("T")[0],
+            date: currentDate.toLocaleString("id", { weekday: "long", year: "numeric", month: "long", day: "numeric", timeZone: "Asia/Jakarta" }),
             shifts: {
               shift_1: cyclePattern[dayOfCycle].shifts[0],
               shift_2: cyclePattern[dayOfCycle].shifts[1],
@@ -170,7 +174,7 @@
 
           schedule.forEach((day) => {
             const row = `
-                        <tr>
+                        <tr class="${day.date === new Date().toLocaleString("id", { weekday: "long", year: "numeric", month: "long", day: "numeric", timeZone: "Asia/Jakarta" }) ? "highlight" : ""}">
                             <td>${day.date}</td>
                             <td>${day.shifts.shift_1.join(" - ")}</td>
                             <td>${day.shifts.shift_2.join(" - ")}</td>
@@ -186,8 +190,12 @@
       });
 
       // Set default dates and trigger form submission to show initial data
-      const defaultStart = new Date();
-      const defaultEnd = new Date(new Date().setDate(defaultStart.getDate() + 7));
+      // default date is start: date - 7 days, end: date + 7 days
+      const today = new Date();
+      const defaultStart = new Date(today);
+      defaultStart.setDate(today.getDate() - 7);
+      const defaultEnd = new Date(today);
+      defaultEnd.setDate(today.getDate() + 7);
       document.getElementById("start").value = defaultStart.toISOString().split("T")[0];
       document.getElementById("end").value = defaultEnd.toISOString().split("T")[0];
       document.getElementById("date-form").dispatchEvent(new Event("submit"));
