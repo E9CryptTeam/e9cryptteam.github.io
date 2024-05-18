@@ -262,7 +262,7 @@ class ScheduleBuilder {
     const { start, end } = this.getQueryParams();
     const today = new Date();
     const defaultStart = new Date(today);
-    defaultStart.setDate(today.getDate() - 7);
+    defaultStart.setDate(today.getDate() - 2);
     const defaultEnd = new Date(today);
     defaultEnd.setDate(today.getDate() + 7);
 
