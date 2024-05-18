@@ -1,0 +1,191 @@
+[
+    {
+        "shifts": [
+            [
+                "Doni",
+                "KOSONG"
+            ],
+            [
+                "Afif",
+                "Farid"
+            ],
+            [
+                "Anjar",
+                "Hilmi"
+            ]
+        ],
+        "off": [
+            "Fiki",
+            "KOSONG",
+            "Adit"
+        ]
+    },
+    {
+        "shifts": [
+            [
+                "Adit",
+                "Doni"
+            ],
+            [
+                "KOSONG",
+                "Afif"
+            ],
+            [
+                "Fiki",
+                "Anjar"
+            ]
+        ],
+        "off": [
+            "KOSONG",
+            "Farid",
+            "Hilmi"
+        ]
+    },
+    {
+        "shifts": [
+            [
+                "Farid",
+                "Adit"
+            ],
+            [
+                "Hilmi",
+                "KOSONG"
+            ],
+            [
+                "KOSONG",
+                "Fiki"
+            ]
+        ],
+        "off": [
+            "Doni",
+            "Afif",
+            "Anjar"
+        ]
+    },
+    {
+        "shifts": [
+            [
+                "Afif",
+                "Farid"
+            ],
+            [
+                "Anjar",
+                "Hilmi"
+            ],
+            [
+                "Doni",
+                "KOSONG"
+            ]
+        ],
+        "off": [
+            "Adit",
+            "Fiki",
+            "KOSONG"
+        ]
+    },
+    {
+        "shifts": [
+            [
+                "KOSONG",
+                "Afif"
+            ],
+            [
+                "Fiki",
+                "Anjar"
+            ],
+            [
+                "Adit",
+                "Doni"
+            ]
+        ],
+        "off": [
+            "Farid",
+            "Hilmi",
+            "KOSONG"
+        ]
+    },
+    {
+        "shifts": [
+            [
+                "Hilmi",
+                "KOSONG"
+            ],
+            [
+                "KOSONG",
+                "Fiki"
+            ],
+            [
+                "Farid",
+                "Adit"
+            ]
+        ],
+        "off": [
+            "Afif",
+            "Anjar",
+            "Doni"
+        ]
+    },
+    {
+        "shifts": [
+            [
+                "Anjar",
+                "Hilmi"
+            ],
+            [
+                "Doni",
+                "KOSONG"
+            ],
+            [
+                "Afif",
+                "Farid"
+            ]
+        ],
+        "off": [
+            "Fiki",
+            "Adit",
+            "KOSONG"
+        ]
+    },
+    {
+        "shifts": [
+            [
+                "Fiki",
+                "Anjar"
+            ],
+            [
+                "Adit",
+                "Doni"
+            ],
+            [
+                "KOSONG",
+                "Afif"
+            ]
+        ],
+        "off": [
+            "KOSONG",
+            "Hilmi",
+            "Farid"
+        ]
+    },
+    {
+        "shifts": [
+            [
+                "KOSONG",
+                "Fiki"
+            ],
+            [
+                "Farid",
+                "Adit"
+            ],
+            [
+                "Hilmi",
+                "KOSONG"
+            ]
+        ],
+        "off": [
+            "Anjar",
+            "Doni",
+            "Afif"
+        ]
+    }
+]
