@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Schedule</title>
         <link rel="stylesheet" href="styles.css" />
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link
+            rel="shortcut icon"
+            href="https://avatars.githubusercontent.com/u/78206136?s=200&v=4"
+        />
         <link rel="manifest" href="manifest.json" />
     </head>
 
@@ -27,21 +30,24 @@
             <div class="table-container">
                 <div id="loader" class="loader" style="display: none"></div>
                 <!-- Add this line for loader -->
-                <table id="schedule-table">
-                    <tr>
-                        <th>Date</th>
-                        <th>Shift 1</th>
-                        <th>Shift 2</th>
-                        <th>Shift 3</th>
-                        <th>Off</th>
-                    </tr>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Shift 1</th>
+                            <th>Shift 2</th>
+                            <th>Shift 3</th>
+                            <th>Off</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schedule-table"></tbody>
                 </table>
             </div>
         </div>
         <script src="script.js"></script>
         <script>
             if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("/service-worker.js");
+                navigator.serviceWorker.register("service-worker.js");
             }
         </script>
     </body>

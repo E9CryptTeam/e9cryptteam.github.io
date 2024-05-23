@@ -163,16 +163,17 @@ class ScheduleBuilder {
       const cyclePattern = await this.fetchSchedulePattern();
       const schedule = this.getSchedule(startDate, endDate, cyclePattern);
 
-      this.scheduleTable.innerHTML = `
-        <tr>
-          <th>Date</th>
-          <th>Shift 1</th>
-          <th>Shift 2</th>
-          <th>Shift 3</th>
-          <th>Off</th>
-        </tr>
-      `;
+      // this.scheduleTable.innerHTML = `
+      //   <tr>
+      //     <th>Date</th>
+      //     <th>Shift 1</th>
+      //     <th>Shift 2</th>
+      //     <th>Shift 3</th>
+      //     <th>Off</th>
+      //   </tr>
+      // `;
 
+      this.scheduleTable.innerHTML = "";
       schedule.forEach((day) => {
         const row = `
           <tr class="${
@@ -216,15 +217,16 @@ class ScheduleBuilder {
       const cyclePattern = await this.fetchSchedulePattern();
       const schedule = this.getSchedule(startDate, endDate, cyclePattern);
 
-      this.scheduleTable.innerHTML = `
-        <tr>
-          <th>Date</th>
-          <th>Shift 1</th>
-          <th>Shift 2</th>
-          <th>Shift 3</th>
-          <th>Off</th>
-        </tr>
-      `;
+      // this.scheduleTable.innerHTML = `
+      //   <tr>
+      //     <th>Date</th>
+      //     <th>Shift 1</th>
+      //     <th>Shift 2</th>
+      //     <th>Shift 3</th>
+      //     <th>Off</th>
+      //   </tr>
+      // `;
+      this.scheduleTable.innerHTML = "";
 
       schedule.forEach((day) => {
         const row = `
@@ -262,7 +264,7 @@ class ScheduleBuilder {
     const { start, end } = this.getQueryParams();
     const today = new Date();
     const defaultStart = new Date(today);
-    defaultStart.setDate(today.getDate() - 2);
+    defaultStart.setDate(today.getDate() - 1);
     const defaultEnd = new Date(today);
     defaultEnd.setDate(today.getDate() + 7);
 
