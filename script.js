@@ -277,3 +277,9 @@ class ScheduleBuilder {
 // Initialize the ScheduleBuilder when the window loads.
 const scheduleBuilder = new ScheduleBuilder();
 window.onload = () => scheduleBuilder.init();
+// window.onload = () => {};
+// window.addEventListener("load", () => {
+//   if ("serviceWorker" in navigator) {
+//     navigator.serviceWorker.register("/pwabuilder-sw.js");
+//   }
+// });

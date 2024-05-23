@@ -1,0 +1,36 @@
+{
+  "name": "Schedule",
+  "short_name": "Schedule",
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "theme_color": "#ffffff",
+  "categories": ["business"],
+  "id": "com.e9crypt.schedule",
+  "screenshots": [
+    {
+      "src": "screenshot/app.png",
+      "sizes": "1080x2400",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Homescreen of Awesome App"
+    }
+    // {
+    //   "src": "screenshot/web.png",
+    //   "sizes": "717x1891",
+    //   "type": "image/png",
+    //   "form_factor": "wide",
+    //   "label": "List of Awesome Resources available in Awesome App"
+    // }
+  ],
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "460x460",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
