@@ -2,6 +2,48 @@
     {
         "shifts": [
             [
+                "Fiki",
+                "Anjar"
+            ],
+            [
+                "Adit",
+                "Doni"
+            ],
+            [
+                "KOSONG",
+                "Afif"
+            ]
+        ],
+        "off": [
+            "KOSONG",
+            "Hilmi",
+            "Farid"
+        ]
+    },
+    {
+        "shifts": [
+            [
+                "KOSONG",
+                "Fiki"
+            ],
+            [
+                "Farid",
+                "Adit"
+            ],
+            [
+                "Hilmi",
+                "KOSONG"
+            ]
+        ],
+        "off": [
+            "Anjar",
+            "Doni",
+            "Afif"
+        ]
+    },
+    {
+        "shifts": [
+            [
                 "Doni",
                 "KOSONG"
             ],
@@ -144,48 +186,6 @@
             "Fiki",
             "Adit",
             "KOSONG"
-        ]
-    },
-    {
-        "shifts": [
-            [
-                "Fiki",
-                "Anjar"
-            ],
-            [
-                "Adit",
-                "Doni"
-            ],
-            [
-                "KOSONG",
-                "Afif"
-            ]
-        ],
-        "off": [
-            "KOSONG",
-            "Hilmi",
-            "Farid"
-        ]
-    },
-    {
-        "shifts": [
-            [
-                "KOSONG",
-                "Fiki"
-            ],
-            [
-                "Farid",
-                "Adit"
-            ],
-            [
-                "Hilmi",
-                "KOSONG"
-            ]
-        ],
-        "off": [
-            "Anjar",
-            "Doni",
-            "Afif"
         ]
     }
 ]
