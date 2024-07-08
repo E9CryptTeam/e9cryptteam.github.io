@@ -90,7 +90,7 @@ class ScheduleBuilder {
 
     while (currentDate <= endDate) {
       const dayOffset = Math.floor(
-        (currentDate - new Date(2024, 4, 13)) / (1000 * 60 * 60 * 24),
+        (currentDate - new Date(2024, 4, 15)) / (1000 * 60 * 60 * 24),
       );
       const dayOfCycle =
         ((dayOffset % cycleLength) + cycleLength) % cycleLength;
