@@ -78,7 +78,6 @@
             ]
         ],
         "off": [
-            "Hilmi",
             "KOSONG",
             "Doni",
             "Hilmi"
@@ -89,10 +88,6 @@
             [
                 "Doni",
                 "Adit"
-            ],
-            [
-                "Farid",
-                "Fiki"
             ],
             [
                 "Hilmi",
@@ -153,10 +148,6 @@
     },
     {
         "shifts": [
-            [
-                "Farid",
-                "Fiki"
-            ],
             [
                 "Hilmi",
                 "Farid"
