@@ -89,11 +89,8 @@ class ScheduleBuilder {
     let currentDate = new Date(startDate);
 
     while (currentDate <= endDate) {
-      const dayOffset = Math.floor(
-        (currentDate - new Date(2024, 4, 16)) / (1000 * 60 * 60 * 24),
-      );
-      const dayOfCycle =
-        ((dayOffset % cycleLength) + cycleLength) % cycleLength;
+      const dayOffset = Math.floor((currentDate - new Date(2024, 4, 17)) / (1000 * 60 * 60 * 24));
+      const dayOfCycle = ((dayOffset % cycleLength) + cycleLength) % cycleLength;
 
       /** @type {Schedule} */
       const schedule = {
@@ -104,11 +101,7 @@ class ScheduleBuilder {
           day: "numeric",
           timeZone: "Asia/Jakarta",
         }),
-        shifts: [
-          cyclePattern[dayOfCycle].shifts[0],
-          cyclePattern[dayOfCycle].shifts[1],
-          cyclePattern[dayOfCycle].shifts[2],
-        ],
+        shifts: [cyclePattern[dayOfCycle].shifts[0], cyclePattern[dayOfCycle].shifts[1], cyclePattern[dayOfCycle].shifts[2]],
         off: cyclePattern[dayOfCycle].off,
       };
       schedules.push(schedule);
@@ -268,8 +261,7 @@ class ScheduleBuilder {
     const defaultEnd = new Date(today);
     defaultEnd.setDate(today.getDate() + 7);
 
-    this.startDateInput.value =
-      start || defaultStart.toISOString().split("T")[0];
+    this.startDateInput.value = start || defaultStart.toISOString().split("T")[0];
     this.endDateInput.value = end || defaultEnd.toISOString().split("T")[0];
 
     this.form.dispatchEvent(new Event("submit"));
