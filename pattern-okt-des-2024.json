@@ -1,0 +1,74 @@
+[
+  {
+    "shifts": [
+      ["Anjar", "Afif"],
+      ["Adit", "Fiki"],
+      ["Farid", "KOSONG"]
+    ],
+    "off": ["Hilmi", "KOSONG", "Doni"]
+  },
+  {
+    "shifts": [
+      ["KOSONG", "Anjar"],
+      ["Doni", "Adit"],
+      ["Hilmi", "Farid"]
+    ],
+    "off": ["Afif", "Fiki", "KOSONG"]
+  },
+  {
+    "shifts": [
+      ["Fiki", "KOSONG"],
+      ["KOSONG", "Doni"],
+      ["Afif", "Hilmi"]
+    ],
+    "off": ["Anjar", "Adit", "Farid"]
+  },
+  {
+    "shifts": [
+      ["Adit", "Fiki"],
+      ["Farid", "KOSONG"],
+      ["Anjar", "Afif"]
+    ],
+    "off": ["KOSONG", "Doni", "Hilmi"]
+  },
+  {
+    "shifts": [
+      ["Doni", "Adit"],
+      ["Hilmi", "Farid"],
+      ["KOSONG", "Anjar"]
+    ],
+    "off": ["Fiki", "KOSONG", "Afif"]
+  },
+  {
+    "shifts": [
+      ["KOSONG", "Doni"],
+      ["Afif", "Hilmi"],
+      ["Fiki", "KOSONG"]
+    ],
+    "off": ["Adit", "Farid", "Anjar"]
+  },
+  {
+    "shifts": [
+      ["Farid", "KOSONG"],
+      ["Anjar", "Afif"],
+      ["Adit", "Fiki"]
+    ],
+    "off": ["Doni", "Hilmi", "KOSONG"]
+  },
+  {
+    "shifts": [
+      ["Hilmi", "Farid"],
+      ["KOSONG", "Anjar"],
+      ["Doni", "Adit"]
+    ],
+    "off": ["KOSONG", "Afif", "Fiki"]
+  },
+  {
+    "shifts": [
+      ["Afif", "Hilmi"],
+      ["Fiki", "KOSONG"],
+      ["KOSONG", "Doni"]
+    ],
+    "off": ["Anjar", "Adit", "Farid"]
+  }
+]
