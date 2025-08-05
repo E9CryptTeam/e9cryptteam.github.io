@@ -1,199 +1,217 @@
+/* Minimalist Mobile-First Design */
+
+/* Base improvements */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f8f9fa;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
-h1,
-h2 {
-    color: #343a40;
-    text-align: center;
-    /* Center the headings */
+/* Mobile-optimized touch targets */
+.btn {
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 8px;
 }
 
-form {
-    margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* Center the form */
-    gap: 10px;
-    /* Add gap between elements */
+.input {
+    min-height: 44px;
+    border-radius: 8px;
+    font-size: 16px; /* Prevents zoom on iOS */
 }
 
-label {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-input[type="date"],
-input[type="submit"] {
-    padding: 10px;
-    /* Increase padding for better touch target */
-    margin-right: 10px;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
-    /* Add border radius */
-    font-size: 16px;
-    /* Increase font size */
-}
-
-input[type="submit"] {
-    background-color: #343a40;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    /* Add transition for hover effect */
-}
-
-input[type="submit"]:hover {
-    background-color: #495057;
-    /* Darker background on hover */
-}
-
-.container {
-    max-width: 100%;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.table-container {
-    width: 100%;
-    overflow-x: auto;
-    position: relative;
-    /* Add relative positioning for loader */
-}
-
-.loader {
-    border: 8px solid #f3f3f3;
-    /* Light grey */
-    border-top: 8px solid #343a40;
-    /* Dark grey */
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 2s linear infinite;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-    /* Hide loader by default */
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    table-layout: fixed;
-    /* Fixed table layout */
-}
-
-th,
-td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #dee2e6;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-th {
-    background-color: #343a40;
-    color: #ffffff;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
+/* Refined highlight for today's schedule */
 .highlight {
-    background-color: #25b365 !important;
-    color: white;
+    background: hsl(var(--p) / 0.08) !important;
+    border: 1px solid hsl(var(--p) / 0.3) !important;
+    border-left: 4px solid hsl(var(--p)) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 12px hsl(var(--p) / 0.15) !important;
+    position: relative !important;
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 600px) {
-    .container {
-        padding: 10px;
-    }
+/* Mobile card component for schedule */
+.schedule-card {
+    background: hsl(var(--b1));
+    border: 1px solid hsl(var(--b3));
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.2s ease;
+}
 
-    table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr {
-        display: block;
-    }
+.schedule-card:hover {
+    border-color: hsl(var(--p) / 0.5);
+    box-shadow: 0 2px 8px hsl(var(--p) / 0.1);
+    transform: translateY(-2px);
+}
 
-    th,
-    td {
-        text-align: left;
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-    }
+.schedule-card.highlight {
+    margin: 4px 0;
+}
 
-    th {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
+.schedule-date {
+    font-weight: 600;
+    font-size: 16px;
+    color: hsl(var(--bc));
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
 
-    tr {
-        margin-bottom: 15px;
-    }
+.highlight .schedule-date {
+    color: hsl(var(--p)) !important;
+    font-weight: 600 !important;
+}
 
-    td {
-        border: none;
-        border-bottom: 1px solid #dee2e6;
-        position: relative;
-        padding-left: 50%;
-    }
+.shift-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
 
-    td:before {
-        position: absolute;
-        top: 50%;
-        left: 10px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        transform: translateY(-50%);
-        font-weight: bold;
-    }
+.shift-item {
+    background: hsl(var(--b2));
+    border-radius: 6px;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
 
-    td:nth-of-type(1):before {
-        content: "Date";
-    }
+.highlight .shift-item {
+    background: hsl(var(--p) / 0.05) !important;
+    border: 1px solid hsl(var(--p) / 0.2) !important;
+    font-weight: 500 !important;
+}
 
-    td:nth-of-type(2):before {
-        content: "Shift 1";
-    }
+.shift-item.active {
+    background: hsl(var(--su));
+    color: hsl(var(--suc));
+}
 
-    td:nth-of-type(3):before {
-        content: "Shift 2";
-    }
+.shift-item.off {
+    background: hsl(var(--n));
+    color: hsl(var(--nc));
+}
 
-    td:nth-of-type(4):before {
-        content: "Shift 3";
-    }
+.highlight .shift-item.off {
+    background: hsl(var(--n) / 0.7) !important;
+    color: hsl(var(--nc)) !important;
+    border-color: hsl(var(--n) / 0.4) !important;
+}
 
-    td:nth-of-type(5):before {
-        content: "Off";
+/* Enhanced visual feedback */
+.highlight .shift-item:hover {
+    background: hsl(var(--p) / 0.1) !important;
+    transform: none;
+    box-shadow: none;
+}
+
+.highlight .shift-item .font-medium {
+    color: hsl(var(--bc)) !important;
+    font-weight: 500 !important;
+}
+
+/* Simplified table for desktop */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table th {
+    background: hsl(var(--b2));
+    color: hsl(var(--bc));
+    font-weight: 600;
+    padding: 12px 8px;
+    font-size: 12px;
+}
+
+.table td {
+    padding: 12px 8px;
+    font-size: 12px;
+    border-bottom: 1px solid hsl(var(--b3));
+    transition: all 0.3s ease;
+}
+
+/* Enhanced table row highlight */
+.table .highlight td {
+    background: hsl(var(--p) / 0.06) !important;
+    border-bottom: 1px solid hsl(var(--p) / 0.3) !important;
+    border-left: 4px solid hsl(var(--p)) !important;
+    font-weight: 500 !important;
+    color: hsl(var(--p)) !important;
+    position: relative;
+}
+
+/* Table row hover effect */
+.table tbody tr:hover:not(.highlight) {
+    background-color: hsl(var(--b2) / 0.5);
+}
+
+/* Simple theme toggle */
+#theme-toggle {
+    backdrop-filter: blur(8px);
+    border: 1px solid hsl(var(--b3));
+    transition: all 0.2s ease;
+}
+
+.theme-toggle-btn {
+    min-width: 40px;
+    min-height: 40px;
+}
+
+/* Loading state */
+.loading-overlay {
+    border-radius: 12px;
+}
+
+/* Smooth transitions */
+.transition-all {
+    transition: all 0.2s ease;
+}
+
+/* Focus states for accessibility */
+.input:focus,
+.btn:focus {
+    outline: 2px solid hsl(var(--p));
+    outline-offset: 2px;
+}
+
+/* Optimized spacing */
+.space-y-3 > * + * {
+    margin-top: 12px;
+}
+
+.space-y-4 > * + * {
+    margin-top: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .btn {
+        font-size: 14px;
+    }
+    
+    .input {
+        font-size: 16px; /* Prevents zoom on mobile */
+    }
+}
+
+/* Auto-scroll to today's item */
+.scroll-to-today {
+    scroll-margin-top: 20px;
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+    html[data-theme="light"] {
+        /* Keep light theme if explicitly set */
     }
 }
