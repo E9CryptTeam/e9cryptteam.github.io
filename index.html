@@ -1,9 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Schedule</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="styles.css" />
         <link
             rel="shortcut icon"
@@ -12,36 +14,89 @@
         <link rel="manifest" href="manifest.json" />
     </head>
 
-    <body>
-        <div class="container">
-            <form id="date-form">
-                <label for="start">Start Date:</label>
-                <input type="date" id="start" name="start" />
+<!doctype html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Schedule</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="shortcut icon"
+            href="https://avatars.githubusercontent.com/u/78206136?s=200&v=4"
+        />
+        <link rel="manifest" href="manifest.json" />
+    </head>
 
-                <label for="end">End Date:</label>
-                <input type="date" id="end" name="end" />
+    <body class="bg-base-100">
+        <div class="min-h-screen px-4 py-6 max-w-2xl mx-auto">
+            <!-- Simple Header -->
+            <div class="text-center mb-6">
+                <h1 class="text-2xl font-bold mb-1">E9 Schedule</h1>
+                <p class="text-sm text-base-content/60">Select date range to generate schedule</p>
+            </div>
 
-                <input type="submit" value="Submit" />
+            <!-- Today Display and Date Range-->
+            <div class="grid">
+                <h2 id="today-date" class="text-lg font-medium"></h2>
+                <h2 id="date-range" class="text-lg font-medium"></h2>
+            </div>
+
+            <!-- Compact Form -->
+            <form id="date-form" class="space-y-4 mb-6">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-sm font-medium mb-1" for="start">From</label>
+                        <input type="date" id="start" name="start" class="input input-bordered input-sm w-full" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1" for="end">To</label>
+                        <input type="date" id="end" name="end" class="input input-bordered input-sm w-full" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">Generate</button>
             </form>
 
-            <h1>Schedule</h1>
-            <h2 id="date-range"></h2>
+            <!-- Mobile-Optimized Schedule -->
+            <div class="relative">
+                <!-- Simple Loader -->
+                <div id="loader" class="absolute inset-0 bg-base-100/90 flex items-center justify-center z-10 rounded-lg" style="display: none">
+                    <span class="loading loading-spinner loading-md text-primary"></span>
+                </div>
+                
+                <!-- Mobile Card Layout -->
+                <div id="schedule-mobile" class="space-y-3 md:hidden">
+                    <!-- Dynamic mobile cards will be inserted here -->
+                </div>
 
-            <div class="table-container">
-                <div id="loader" class="loader" style="display: none"></div>
-                <!-- Add this line for loader -->
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Shift 1</th>
-                            <th>Shift 2</th>
-                            <th>Shift 3</th>
-                            <th>Off</th>
-                        </tr>
-                    </thead>
-                    <tbody id="schedule-table"></tbody>
-                </table>
+                <!-- Desktop Table (hidden on mobile) -->
+                <div class="hidden md:block overflow-x-auto">
+                    <table class="table table-zebra table-sm w-full">
+                        <thead>
+                            <tr class="bg-base-200">
+                                <th class="text-xs">Date</th>
+                                <th class="text-xs">Shift 1</th>
+                                <th class="text-xs">Shift 2</th>
+                                <th class="text-xs">Shift 3</th>
+                                <th class="text-xs">Off</th>
+                            </tr>
+                        </thead>
+                        <tbody id="schedule-table" class="text-xs">
+                            <!-- Dynamic content will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Simple Theme Toggle -->
+            <div class="fixed top-4 right-4">
+                <button id="theme-toggle" class="btn btn-primary btn-sm theme-toggle-btn" onclick="toggleTheme()">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"></path>
+                    </svg>
+                </button>
             </div>
         </div>
         <script src="script.js"></script>
