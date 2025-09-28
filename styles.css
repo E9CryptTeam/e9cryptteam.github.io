@@ -10,6 +10,284 @@ body {
     line-height: 1.5;
 }
 
+/* Enhanced Dock Navigation Styles */
+.enhanced-dock {
+    animation: slideUpFade 0.6s ease-out forwards;
+    user-select: none;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.dock-container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        0 2px 16px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] .dock-container {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 2px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dock-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.15),
+        0 4px 20px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.dock-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 80px;
+    color: hsl(var(--bc) / 0.7);
+}
+
+.dock-button:hover {
+    background: hsl(var(--p) / 0.1);
+    color: hsl(var(--p));
+    transform: translateY(-2px);
+}
+
+.dock-button:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.dock-button.dock-active {
+    background: linear-gradient(135deg, hsl(var(--p) / 0.15), hsl(var(--p) / 0.08));
+    color: hsl(var(--p));
+    box-shadow: 
+        0 4px 16px hsl(var(--p) / 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.dock-button.dock-active:hover {
+    background: linear-gradient(135deg, hsl(var(--p) / 0.2), hsl(var(--p) / 0.12));
+    transform: translateY(-1px);
+}
+
+.dock-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.dock-icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dock-button:hover .dock-icon {
+    transform: scale(1.1);
+}
+
+.dock-button.dock-active .dock-icon {
+    transform: scale(1.05);
+    filter: drop-shadow(0 2px 4px hsl(var(--p) / 0.3));
+}
+
+.active-indicator {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, hsl(var(--p)), hsl(var(--p) / 0.8));
+    border: 2px solid hsl(var(--b1));
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px hsl(var(--p) / 0.4);
+}
+
+.dock-button.dock-active .active-indicator {
+    opacity: 1;
+    transform: scale(1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 2px 8px hsl(var(--p) / 0.4);
+    }
+    50% {
+        box-shadow: 0 2px 16px hsl(var(--p) / 0.6);
+    }
+}
+
+.dock-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.8;
+}
+
+.dock-button:hover .dock-label,
+.dock-button.dock-active .dock-label {
+    opacity: 1;
+    font-weight: 700;
+}
+
+.dock-divider {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        hsl(var(--bc) / 0.15) 25%,
+        hsl(var(--bc) / 0.15) 75%,
+        transparent
+    );
+    margin: 0 4px;
+}
+
+/* Responsive dock adjustments */
+@media (max-width: 480px) {
+    .enhanced-dock {
+        margin-bottom: 1rem;
+    }
+    
+    .dock-container {
+        padding: 12px 16px;
+        border-radius: 18px;
+        gap: 16px;
+    }
+    
+    .dock-button {
+        min-width: 70px;
+        padding: 10px 12px;
+        gap: 6px;
+        border-radius: 14px;
+    }
+    
+    .dock-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .dock-icon-wrapper {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .dock-label {
+        font-size: 10px;
+        letter-spacing: 0.3px;
+    }
+    
+    .dock-divider {
+        height: 32px;
+        margin: 0 8px;
+    }
+    
+    .active-indicator {
+        width: 10px;
+        height: 10px;
+        top: -3px;
+        right: -3px;
+    }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1024px) {
+    .dock-container {
+        padding: 16px 24px;
+    }
+    
+    .dock-button {
+        min-width: 90px;
+        padding: 14px 18px;
+        gap: 10px;
+    }
+    
+    .dock-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .dock-icon-wrapper {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .dock-label {
+        font-size: 12px;
+    }
+    
+    .dock-divider {
+        height: 48px;
+        margin: 0 8px;
+    }
+}
+
+/* Enhanced focus states for accessibility */
+.dock-button:focus {
+    outline: none;
+    box-shadow: 
+        0 0 0 3px hsl(var(--p) / 0.3),
+        0 4px 16px hsl(var(--p) / 0.2);
+}
+
+/* Smooth entrance animation for buttons */
+.dock-button {
+    animation: fadeInScale 0.6s ease-out forwards;
+}
+
+.dock-button:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.dock-button:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 /* Mobile-optimized touch targets */
 .btn {
     min-height: 44px;
