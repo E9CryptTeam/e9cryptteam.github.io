@@ -2,24 +2,8 @@
 <html lang="en" data-theme="light">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Schedule</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" href="styles.css" />
-        <link
-            rel="shortcut icon"
-            href="https://avatars.githubusercontent.com/u/78206136?s=200&v=4"
-        />
-        <link rel="manifest" href="manifest.json" />
-    </head>
-
-<!doctype html>
-<html lang="en" data-theme="light">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Schedule</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <title>E9 Schedule App</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="styles.css" />
@@ -31,62 +15,126 @@
     </head>
 
     <body class="bg-base-100">
-        <div class="min-h-screen px-4 py-6 max-w-2xl mx-auto">
-            <!-- Simple Header -->
-            <div class="text-center mb-6">
-                <h1 class="text-2xl font-bold mb-1">E9 Schedule</h1>
-                <p class="text-sm text-base-content/60">Select date range to generate schedule</p>
+        <!-- Main App Container -->
+        <div class="min-h-screen pb-20">
+            <!-- Current Schedule View -->
+            <div id="current-schedule" class="view-content px-4 py-6 max-w-2xl mx-auto">
+                <!-- Simple Header -->
+                <div class="text-center mb-6">
+                    <h1 class="text-2xl font-bold mb-1">E9 Schedule</h1>
+                    <p class="text-sm text-base-content/60">Select date range to generate schedule</p>
+                </div>
+
+                <!-- Today Display and Date Range-->
+                <div class="grid">
+                    <h2 id="today-date" class="text-lg font-medium"></h2>
+                    <h2 id="date-range" class="text-lg font-medium"></h2>
+                </div>
+
+                <!-- Compact Form -->
+                <form id="date-form" class="space-y-4 mb-6">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-sm font-medium mb-1" for="start">From</label>
+                            <input type="date" id="start" name="start" class="input input-bordered input-sm w-full" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1" for="end">To</label>
+                            <input type="date" id="end" name="end" class="input input-bordered input-sm w-full" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">Generate</button>
+                </form>
+
+                <!-- Mobile-Optimized Schedule -->
+                <div class="relative">
+                    <!-- Simple Loader -->
+                    <div id="loader" class="absolute inset-0 bg-base-100/90 flex items-center justify-center z-10 rounded-lg" style="display: none">
+                        <span class="loading loading-spinner loading-md text-primary"></span>
+                    </div>
+                    
+                    <!-- Mobile Card Layout -->
+                    <div id="schedule-mobile" class="space-y-3 md:hidden">
+                        <!-- Dynamic mobile cards will be inserted here -->
+                    </div>
+
+                    <!-- Desktop Table (hidden on mobile) -->
+                    <div class="hidden md:block overflow-x-auto">
+                        <table class="table table-zebra table-sm w-full">
+                            <thead>
+                                <tr class="bg-base-200">
+                                    <th class="text-xs">Date</th>
+                                    <th class="text-xs">Shift 1</th>
+                                    <th class="text-xs">Shift 2</th>
+                                    <th class="text-xs">Shift 3</th>
+                                    <th class="text-xs">Off</th>
+                                </tr>
+                            </thead>
+                            <tbody id="schedule-table" class="text-xs">
+                                <!-- Dynamic content will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
-            <!-- Today Display and Date Range-->
-            <div class="grid">
-                <h2 id="today-date" class="text-lg font-medium"></h2>
-                <h2 id="date-range" class="text-lg font-medium"></h2>
-            </div>
+            <!-- Q4 Schedule View -->
+            <div id="q4-schedule" class="view-content px-4 py-6 max-w-2xl mx-auto" style="display: none;">
+                <!-- Simple Header -->
+                <div class="text-center mb-6">
+                    <h1 class="text-2xl font-bold mb-1">E9 Q4 Schedule Pattern</h1>
+                    <p class="text-sm text-base-content/60">Select date range to generate Q4 schedule pattern</p>
+                </div>
 
-            <!-- Compact Form -->
-            <form id="date-form" class="space-y-4 mb-6">
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-sm font-medium mb-1" for="start">From</label>
-                        <input type="date" id="start" name="start" class="input input-bordered input-sm w-full" />
+                <!-- Today Display and Date Range-->
+                <div class="grid">
+                    <h2 id="q4-today-date" class="text-lg font-medium"></h2>
+                    <h2 id="q4-date-range" class="text-lg font-medium"></h2>
+                </div>
+
+                <!-- Compact Form -->
+                <form id="q4-date-form" class="space-y-4 mb-6">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-sm font-medium mb-1" for="q4-start">From</label>
+                            <input type="date" id="q4-start" name="start" class="input input-bordered input-sm w-full" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1" for="q4-end">To</label>
+                            <input type="date" id="q4-end" name="end" class="input input-bordered input-sm w-full" />
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1" for="end">To</label>
-                        <input type="date" id="end" name="end" class="input input-bordered input-sm w-full" />
+                    <button type="submit" class="btn btn-primary w-full">Generate</button>
+                </form>
+
+                <!-- Mobile-Optimized Schedule -->
+                <div class="relative">
+                    <!-- Simple Loader -->
+                    <div id="q4-loader" class="absolute inset-0 bg-base-100/90 flex items-center justify-center z-10 rounded-lg" style="display: none">
+                        <span class="loading loading-spinner loading-md text-primary"></span>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary w-full">Generate</button>
-            </form>
+                    
+                    <!-- Mobile Card Layout -->
+                    <div id="q4-schedule-mobile" class="space-y-3 md:hidden">
+                        <!-- Dynamic mobile cards will be inserted here -->
+                    </div>
 
-            <!-- Mobile-Optimized Schedule -->
-            <div class="relative">
-                <!-- Simple Loader -->
-                <div id="loader" class="absolute inset-0 bg-base-100/90 flex items-center justify-center z-10 rounded-lg" style="display: none">
-                    <span class="loading loading-spinner loading-md text-primary"></span>
-                </div>
-                
-                <!-- Mobile Card Layout -->
-                <div id="schedule-mobile" class="space-y-3 md:hidden">
-                    <!-- Dynamic mobile cards will be inserted here -->
-                </div>
-
-                <!-- Desktop Table (hidden on mobile) -->
-                <div class="hidden md:block overflow-x-auto">
-                    <table class="table table-zebra table-sm w-full">
-                        <thead>
-                            <tr class="bg-base-200">
-                                <th class="text-xs">Date</th>
-                                <th class="text-xs">Shift 1</th>
-                                <th class="text-xs">Shift 2</th>
-                                <th class="text-xs">Shift 3</th>
-                                <th class="text-xs">Off</th>
-                            </tr>
-                        </thead>
-                        <tbody id="schedule-table" class="text-xs">
-                            <!-- Dynamic content will be inserted here -->
-                        </tbody>
-                    </table>
+                    <!-- Desktop Table (hidden on mobile) -->
+                    <div class="hidden md:block overflow-x-auto">
+                        <table class="table table-zebra table-sm w-full">
+                            <thead>
+                                <tr class="bg-base-200">
+                                    <th class="text-xs">Date</th>
+                                    <th class="text-xs">Shift 1</th>
+                                    <th class="text-xs">Shift 2</th>
+                                    <th class="text-xs">Off</th>
+                                </tr>
+                            </thead>
+                            <tbody id="q4-schedule-table" class="text-xs">
+                                <!-- Dynamic content will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -99,7 +147,37 @@
                 </button>
             </div>
         </div>
-        <script src="script.js"></script>
+
+        <!-- Enhanced Dock Navigation -->
+        <div class="enhanced-dock fixed bottom-0 left-1/2 transform -translate-x-1/2 mb-6 z-50">
+            <div class="dock-container bg-base-200/80 backdrop-blur-md border border-base-300/50 rounded-2xl px-4 py-3 shadow-2xl">
+                <div class="flex items-center justify-center gap-6">
+                    <button id="nav-current" class="dock-button dock-active" data-view="current-schedule">
+                        <div class="dock-icon-wrapper">
+                            <svg class="dock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.89 3 3.01 3.89 3.01 5L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                            </svg>
+                            <div class="active-indicator"></div>
+                        </div>
+                        <span class="dock-label">Current</span>
+                    </button>
+                    
+                    <div class="dock-divider"></div>
+                    
+                    <button id="nav-q4" class="dock-button" data-view="q4-schedule">
+                        <div class="dock-icon-wrapper">
+                            <svg class="dock-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>
+                            </svg>
+                            <div class="active-indicator"></div>
+                        </div>
+                        <span class="dock-label">Q4 Pattern</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script src="spa-app.js"></script>
         <script>
             if ("serviceWorker" in navigator) {
                 navigator.serviceWorker.register("service-worker.js");

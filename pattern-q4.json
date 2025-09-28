@@ -1,0 +1,52 @@
+[
+    {
+      "shifts": [
+        ["Adit", "Afif"],
+        ["Doni", "Anjar"]
+      ],
+      "off": ["Farid", "Fiki", "Hilmy"]
+    },
+    {
+      "shifts": [
+        ["Farid", "Adit"],
+        ["Fiki", "Doni"]
+      ],
+      "off": ["Afif", "Anjar", "Hilmy"]
+    },
+    {
+      "shifts": [
+        ["Hilmy", "Farid"],
+        ["Afif", "Fiki"]
+      ],
+      "off": ["Adit", "Anjar", "Doni"]
+    },
+    {
+      "shifts": [
+        ["Anjar", "Hilmy"],
+        ["Adit", "Afif"]
+      ],
+      "off": ["Farid", "Doni", "Fiki"]
+    },
+    {
+      "shifts": [
+        ["Doni", "Anjar"],
+        ["Farid", "Adit"]
+      ],
+      "off": ["Afif", "Fiki", "Hilmy"]
+    },
+    {
+      "shifts": [
+        ["Fiki", "Doni"],
+        ["Hilmy", "Farid"]
+      ],
+      "off": ["Adit", "Afif", "Anjar"]
+    },
+    {
+      "shifts": [
+        ["Afif", "Fiki"],
+        ["Anjar", "Hilmy"]
+      ],
+      "off": ["Adit", "Doni", "Farid"]
+    }
+  ]
+  
