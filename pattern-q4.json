@@ -1,52 +1,52 @@
 [
     {
       "shifts": [
-        ["Adit", "Afif"],
-        ["Doni", "Anjar"]
+        ["Doni", "Fiki"],
+        ["Hilmy", "Afif"]
       ],
-      "off": ["Farid", "Fiki", "Hilmy"]
+      "off": ["Adit", "Anjar", "Farid"]
     },
     {
       "shifts": [
-        ["Farid", "Adit"],
-        ["Fiki", "Doni"]
+        ["Farid", "Doni"],
+        ["Adit", "Hilmy"]
       ],
-      "off": ["Afif", "Anjar", "Hilmy"]
+      "off": ["Afif", "Anjar", "Fiki"]
     },
     {
       "shifts": [
-        ["Hilmy", "Farid"],
-        ["Afif", "Fiki"]
+        ["Anjar", "Farid"],
+        ["Fiki", "Adit"]
       ],
-      "off": ["Adit", "Anjar", "Doni"]
+      "off": ["Afif", "Doni", "Hilmy"]
     },
     {
       "shifts": [
-        ["Anjar", "Hilmy"],
-        ["Adit", "Afif"]
+        ["Afif", "Anjar"],
+        ["Doni", "Fiki"]
       ],
-      "off": ["Farid", "Doni", "Fiki"]
+      "off": ["Adit", "Farid", "Hilmy"]
     },
     {
       "shifts": [
-        ["Doni", "Anjar"],
-        ["Farid", "Adit"]
+        ["Hilmy", "Afif"],
+        ["Farid", "Doni"]
       ],
-      "off": ["Afif", "Fiki", "Hilmy"]
+      "off": ["Adit", "Anjar", "Fiki"]
     },
     {
       "shifts": [
-        ["Fiki", "Doni"],
-        ["Hilmy", "Farid"]
+        ["Adit", "Hilmy"],
+        ["Anjar", "Farid"]
       ],
-      "off": ["Adit", "Afif", "Anjar"]
+      "off": ["Afif", "Doni", "Fiki"]
     },
     {
       "shifts": [
-        ["Afif", "Fiki"],
-        ["Anjar", "Hilmy"]
+        ["Fiki", "Adit"],
+        ["Afif", "Anjar"]
       ],
-      "off": ["Adit", "Doni", "Farid"]
+      "off": ["Doni", "Farid", "Hilmy"]
     }
   ]
   
