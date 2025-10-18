@@ -116,7 +116,7 @@ class Q4ScheduleBuilder {
     
     // Set reference date for Q4 pattern - October 1, 2024 (start of Q4)
     // This is when the Q4 pattern should start from day 0 (first pattern day)
-    const baseDate = new Date(2024, 9, 1); // October 1, 2024 (month 9 = October)
+    const baseDate = new Date(2024, 9, 2); // October 1, 2024 (month 9 = October)
     let currentDate = new Date(startDate);
 
     while (currentDate <= endDate) {
