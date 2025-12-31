@@ -39,7 +39,7 @@
  */
 class Q4ScheduleBuilder {
   constructor() {
-    this.schedulePatternUrl = "pattern-q4.json";
+    this.schedulePatternUrl = "pattern-q1-2025.json";
     this.scheduleTable = document.getElementById("schedule-table");
     this.scheduleMobile = document.getElementById("schedule-mobile");
     this.todayDate = document.getElementById("today-date");
@@ -116,7 +116,7 @@ class Q4ScheduleBuilder {
     
     // Set reference date for Q4 pattern - October 1, 2024 (start of Q4)
     // This is when the Q4 pattern should start from day 0 (first pattern day)
-    const baseDate = new Date(2024, 9, 2); // October 1, 2024 (month 9 = October)
+    const baseDate = new Date(2026, 1, 2); // October 1, 2024 (month 9 = October)
     let currentDate = new Date(startDate);
 
     while (currentDate <= endDate) {
