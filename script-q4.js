@@ -39,7 +39,7 @@
  */
 class Q4ScheduleBuilder {
   constructor() {
-    this.schedulePatternUrl = "pattern-q3-2026.json";
+    this.schedulePatternUrl = "pattern-q4-2026.json";
     this.scheduleTable = document.getElementById("schedule-table");
     this.scheduleMobile = document.getElementById("schedule-mobile");
     this.todayDate = document.getElementById("today-date");
